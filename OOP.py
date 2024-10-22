@@ -66,7 +66,7 @@ class archer(Character):
         print("Arrow: ",self.arrow)
 
 user_name = input("Enter your name: ")
-user_character = input("Enter the character you want to play Wizard(w) / Knight(k) / archer (a): ")
+user_character = input("Enter the character you want to play Wizard(w) / Knight(k) / archer (a): ").lower()
 
 opponent_type = random.randint(1,3)
 if opponent_type == 1:

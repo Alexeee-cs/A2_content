@@ -53,4 +53,13 @@ AttachLeft("White", 6)
 AttachLeft("Pink", 7)
 AttachLeft("Grey", 9)
 AttachRight("Orange", 9)
-printTreeLeft()
+#printTreeLeft()
+
+def Leaf_Traverse(node):
+    if arrayname[node].leftpointer_getter() != -1:
+        Leaf_Traverse(arrayname[node].leftpointer_getter())
+    if arrayname[node].rightpointer_getter() != -1:
+        Leaf_Traverse(arrayname[node].rightpointer_getter())
+    if arrayname[node].leftpointer_getter() == -1 and arrayname[node].rightpointer_getter() == -1:
+        print(arrayname[node].data_getter())
+Leaf_Traverse(0)

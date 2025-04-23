@@ -1,45 +1,49 @@
 class Node:
     def __init__(self,data):
         self.data = data
-        self.leftChild = None
-        self.rightChild = None
+        self.left = None
+        self.right = None
     def insert(self,data):
         if data < self.data:
-            if self.leftChild:
-                self.leftChild.insert(data)
+            if self.left:
+                self.left.insert(data)
             else:
-                self.leftChild = Node(data)
+                self.left = Node(data)
                 return
         else:
-            if self.rightChild:
-                self.rightChild.insert(data)
+            if self.right:
+                self.right.insert(data)
             else:
-                self.rightChild = Node(data)
+                self.right = Node(data)
                 return
-    def search(self,val):
-        if val == self.data:
-            return str(val)+ " is found in the Binary Tree"
-        elif val < self.data:
-            if self.leftChild:
-                return self.leftChild.search(val)
+    def search(self,data):
+        if data == self.data:
+            return str(data) + " is found in the Tree"
+        elif data < self.data:
+            if self.left:
+                return self.left.search(data)
             else:
-                if self.rightChild:
-                    return self.rightChild.search(val)
-                else:
-                    return str(val)+ " is not found in the Binary Tree"
-    def PrintTree(self):
-        if self.leftChild:
-            self.leftChild.PrintTree()
+                return str(data) + " is not found in the Tree"
+        else:
+            if self.right:
+                return self.right.search(data)
+            else:
+                return str(data) + " is not found in the Tree"
+    def PrintTree(self): #inorder traversal
+        if self.left is not None:
+            self.left.PrintTree()
         print(self.data)
-        if self.rightChild:
-            self.rightChild.PrintTree()
+        if self.right is not None:
+            self.right.PrintTree()
 
-root = Node(27)
-root.insert(14)
-root.insert(35)
-root.insert(31)
-root.insert(10)
-root.insert(19)
-root.PrintTree()
-print(root.search(7))
-print(root.search(14))
+Tree = Node(36)
+Tree.insert(17)
+Tree.insert(5)
+Tree.insert(21)
+Tree.insert(70)
+Tree.insert(50)
+Tree.insert(102)
+Tree.insert(91)
+print(Tree.search(21))
+print(Tree.search(66))
+Tree.PrintTree()
